@@ -7,6 +7,16 @@
       "config": {
         "distDir": "build"
       }
+    },
+    {
+      "src": "backend/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "backend/index.js"
     }
   ]
 }
