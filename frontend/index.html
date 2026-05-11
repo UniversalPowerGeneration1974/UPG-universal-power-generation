@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPG - Universal Power Generation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="logo">
+                    <h1>🌞 UPG</h1>
+                    <p>Universal Power Generation</p>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#" onclick="showPage('home')">Home</a></li>
+                    <li><a href="#" onclick="showPage('chat')">Chat</a></li>
+                    <li><a href="#" onclick="showPage('profile')">Profile</a></li>
+                    <li><a href="#" onclick="logout()" class="logout-btn">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Home Page -->
+        <div id="home" class="page">
+            <section class="hero">
+                <div class="hero-content">
+                    <h2>Welcome to UPG</h2>
+                    <p>Harness the Power of the Sun</p>
+                    <div class="hero-description">
+                        <h3>Revolutionary Solar Energy Solutions</h3>
+                        <p>UPG Universal Power Generation is committed to providing sustainable and efficient solar energy solutions for homes and businesses worldwide.</p>
+                        <div class="features">
+                            <div class="feature-card">
+                                <h4>🔆 High Efficiency</h4>
+                                <p>Maximum energy conversion with cutting-edge technology</p>
+                            </div>
+                            <div class="feature-card">
+                                <h4>💰 Cost-Effective</h4>
+                                <p>Affordable solar solutions for everyone</p>
+                            </div>
+                            <div class="feature-card">
+                                <h4>🌍 Eco-Friendly</h4>
+                                <p>Clean energy for a sustainable future</p>
+                            </div>
+                            <div class="feature-card">
+                                <h4>🛠️ Expert Support</h4>
+                                <p>24/7 technical support and maintenance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Chat Page -->
+        <div id="chat" class="page" style="display:none;">
+            <div class="chat-container">
+                <div class="chat-sidebar">
+                    <h3>Contacts</h3>
+                    <ul id="contactsList" class="contacts-list"></ul>
+                </div>
+                <div class="chat-main">
+                    <div class="chat-header">
+                        <h3 id="chatContactName">Select a contact</h3>
+                    </div>
+                    <div class="chat-messages" id="chatMessages"></div>
+                    <div class="chat-input-area">
+                        <input type="text" id="messageInput" placeholder="Type a message..." onkeypress="handleMessageKeypress(event)">
+                        <button onclick="sendMessage()" class="send-btn">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Page -->
+        <div id="profile" class="page" style="display:none;">
+            <div class="profile-container">
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <div id="avatarDisplay" class="avatar-circle">👤</div>
+                    </div>
+                    <h2 id="profileName">User Profile</h2>
+                </div>
+                <div class="profile-form">
+                    <div class="form-group">
+                        <label>Username:</label>
+                        <input type="text" id="profileUsername" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" id="profileEmail" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Full Name:</label>
+                        <input type="text" id="profileFullname">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone:</label>
+                        <input type="tel" id="profilePhone">
+                    </div>
+                    <div class="form-group">
+                        <label>Company:</label>
+                        <input type="text" id="profileCompany">
+                    </div>
+                    <div class="form-group">
+                        <label>Location:</label>
+                        <input type="text" id="profileLocation">
+                    </div>
+                    <button onclick="updateProfile()" class="submit-btn">Update Profile</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Login Page -->
+        <div id="login" class="page" style="display:none;">
+            <div class="auth-container">
+                <div class="auth-card">
+                    <h2>🔐 Login to UPG</h2>
+                    <form onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="email" id="loginEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Password:</label>
+                            <input type="password" id="loginPassword" required>
+                        </div>
+                        <button type="submit" class="submit-btn">Login</button>
+                    </form>
+                    <p class="auth-link">Don't have an account? <a href="#" onclick="showPage('signup')">Sign Up</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Signup Page -->
+        <div id="signup" class="page" style="display:none;">
+            <div class="auth-container">
+                <div class="auth-card">
+                    <h2>📝 Create Account</h2>
+                    <form onsubmit="handleSignup(event)">
+                        <div class="form-group">
+                            <label>Full Name:</label>
+                            <input type="text" id="signupFullname" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Username:</label>
+                            <input type="text" id="signupUsername" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="email" id="signupEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Password:</label>
+                            <input type="password" id="signupPassword" required>
+                        </div>
+                        <button type="submit" class="submit-btn">Sign Up</button>
+                    </form>
+                    <p class="auth-link">Already have an account? <a href="#" onclick="showPage('login')">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

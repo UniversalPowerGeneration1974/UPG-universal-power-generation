@@ -1,0 +1,13 @@
+node_modules/
+.env.local
+.env.*.local
+*.log
+upg.db
+.DS_Store
+dist/
+build/
+.vscode/settings.json
+*.swp
+*.swo
+*~
+.idea/
